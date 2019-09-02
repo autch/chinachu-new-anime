@@ -1,0 +1,53 @@
+<!DOCTYPE html>{# -*- mode: nunjucks; -*- #}
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>アニメ予約状況</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="{{baseuri}}/css/bootstrap.min.css">
+    <style>
+      body { font-family: sans-serif; padding-top: 60px; padding-bottom: 20px; }
+    </style>
+    <!--link rel="stylesheet" href="{{baseuri}}/css/bootstrap-theme.min.css"-->
+    <link rel="stylesheet" href="{{baseuri}}/css/main.css">
+    <script src="{{baseuri}}/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+	    <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">アニメ予約リスト</a>
+	    </div>
+	    <div class="navbar-collapse collapse">
+	      <form class="navbar-form navbar-left form-inline">
+	        <div class="form-group btn-group" id="hide-prog-status" data-toggle="buttons">
+	          <label class="btn btn-default btn-xs"><input type="checkbox" value="f" checked="checked"><span class="f q">無視</span> <small>({{count.filtered}})</small></label>
+	          <label class="btn btn-default btn-xs"><input type="checkbox" value="r"><span class="r">予約済</span> <small>({{count.reserved}})</small></label>
+	          <label class="btn btn-default btn-xs"><input type="checkbox" value="a">未予約 <small>({{count.available}})</small></label>
+	          <label class="btn btn-default btn-xs"><input type="checkbox" value="nl"><span class="n">新番組</span>/<span class="l">最終話</span> <small>({{count.new_or_last}})</small></label>
+	        </div>
+	        <div class="form-group btn-group" id="hide-ch-type" data-toggle="buttons">
+	          <label class="btn btn-default btn-xs"><input type="checkbox" value="BS" checked>BS <small>({{count.by_type.BS}})</small></label>
+	          <label class="btn btn-default btn-xs"><input type="checkbox" value="CS" checked>CS <small>({{count.by_type.CS}})</small></label>
+	          <label class="btn btn-default btn-xs"><input type="checkbox" value="GR" checked>地上波 <small>({{count.by_type.GR}})</small></label>
+	        </div>
+	      </form>
+	      <p class="navbar-text">全 {{count.all}} 件（<span id="count-shown">-</span> 件表示中）</p>
+	    </div>
+      </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{baseuri}}/js/vendor/jquery-2.0.3.min.js"><\/script>')</script>
+      <script src="{{baseuri}}/js/vendor/bootstrap.min.js"></script>
+      <script src="{{baseuri}}/js/main.js"></script>
+  </body>
+</html>

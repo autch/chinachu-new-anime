@@ -1,0 +1,12 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+table.table { font-size: 12px; }
+.f { color: #ccc; }
+.r { background-color: #fee; }
+.q { background-color: #ff0; font-weight: bold; }
+label.btn input[type='checkbox'] { display: none; }
+
+.n { background-color: #efe; }
+.l { background-color: #eef; }

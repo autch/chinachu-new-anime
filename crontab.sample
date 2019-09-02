@@ -1,0 +1,3 @@
+# m h  dom mon dow   command
+0 6 * * 1 /bin/bash -lc "cd $HOME/src/chinachu-new-anime && npm run --silent mail-new-anime -- -c $HOME/.new-anime.conf"
+

@@ -1,0 +1,17 @@
+{
+  "chinachu": "http://localhost:10772/api/",
+  "transport": {
+    "host": "smtp.gmail.com",
+    "port": 587,
+    "name": "<YOUR_MAIL_HOST>",
+    "auth": {
+      "user": "YOURNAME@gmail.com",
+      "pass": "<APP-PASSWORD>"
+    }
+  },
+  "envelope": {
+    "from": "YOURNAME@gmail.com",
+    "to": "YOURNAME@gmail.com",
+    "subject": "[chinachu] 今週の新番組"
+  }
+}

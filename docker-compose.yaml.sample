@@ -1,0 +1,16 @@
+version: '2.4'
+services:
+  app:
+    build:
+      context: .
+    environment:
+      NODE_ENV: production
+      URI_ROOT: https://your-server.example.com/new-anime/
+    init: true
+    volumes:
+    - ./ignore_keywords.txt:/usr/src/app/ignore_keywords.txt
+    ports:
+    - 50772:3000
+    command: ["node", "./new-anime.js", "--chinachu", "http://192.168.0.1:10772/api/"]
+    restart: unless-stopped
+

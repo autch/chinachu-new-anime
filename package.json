@@ -1,0 +1,24 @@
+{
+  "name": "chinachu-new-anime",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mail-new-anime.js",
+  "scripts": {
+    "mail-new-anime": "node ./mail-new-anime.js",
+    "check-expired-kw": "node ./check-expired-kw.js",
+    "new-anime": "node ./new-anime.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/autch/chinachu-new-anime.git"
+  },
+  "author": "https://github.com/autch/chinachu-new-anime",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "minimist": "^1.2.0",
+    "nodemailer": "^6.3.0",
+    "nunjucks": "^3.2.0"
+  }
+}
