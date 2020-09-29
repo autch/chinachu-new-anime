@@ -7,11 +7,12 @@ const fs = require('fs');
 const argv = require('minimist')(process.argv.slice(2));
 const config = JSON.parse(fs.readFileSync(argv.c || argv.config, 'utf8'));
 const chinachu = new URL(config.chinachu || 'http://localhost:10772/api/');
+const {DateTime} = require('luxon');
 
 const nodemailer = require('nodemailer');
 const mail_template =
 `<% for(let row of programs) { -%>
-■<%= date_format(new Date(row.start)) %> [<%= row.channel.type %>] <%= row.channel.name %> <%= row.reserved ? "【予約済】" : "" %>
+■<%= date_format(row.start) %> [<%= row.channel.type %>] <%= row.channel.name %> <%= row.reserved ? "【予約済】" : "" %>
 <%= row.fullTitle %>
 
 <%= row.detail %>
@@ -97,7 +98,7 @@ async function main() {
 
   const mail = ejs.render(mail_template, {
     programs: new_anime,
-    date_format: (i) => `${i.getMonth() + 1}/${i.getDate()} ${i.getHours()}:${i.getMinutes()}`
+    date_format: (i) => DateTime.fromMillis(i, {zone: 'Asia/Tokyo'}).toFormat("MM/dd HH:mm")
   });
 
   const mail_to_send = bogus_wrap(mail, 76);

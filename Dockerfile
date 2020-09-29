@@ -1,13 +1,13 @@
-FROM node:10-buster
+FROM node:12-buster
 
 WORKDIR /usr/src/app
 EXPOSE 3000
 
-ADD package.json package-lock.json /usr/src/app/
-RUN npm i --production --no-progress
+ADD package.json yarn.lock /usr/src/app/
+RUN yarn install --production
 
 ADD . /usr/src/app
 
 USER node
-CMD ["node", "./new-anime.js"]
+CMD ["yarn", "run", "new-anime"]
 

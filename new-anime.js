@@ -3,6 +3,7 @@ const app = express();
 const nunjucks = require('nunjucks');
 const fs = require('fs');
 const argv = require('minimist')(process.argv.slice(2));
+const {DateTime} = require('luxon');
 
 
 const njk_env = nunjucks.configure('views', {
@@ -10,11 +11,8 @@ const njk_env = nunjucks.configure('views', {
   express: app
 });
                   
-njk_env.addFilter('date', (i) => {
-  const dt = new Date(i * 1000);
-  const dow = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-  return `${dt.getMonth()+1}/${dt.getDate()} ${dow[dt.getDay()]} ${dt.getHours()}:${dt.getMinutes()}`
+njk_env.addFilter('date', (i, format) => {
+  return i.toFormat(format || 'MM/dd HH:mm');
 });
 
 app.use(express.static('public'));
@@ -104,8 +102,8 @@ app.get('/', async (req, res) => {
     row.matched = row.fullTitle.replace(conditions, m => `<span class=\"q\">${m}</span>`);
     row.new = /\[新\]/.test(row.fullTitle);
     row.last = /\[終\]/.test(row.fullTitle);
-    row.start = Math.floor(row.start / 1000);
-    row.end = Math.floor(row.end / 1000);
+    row.start = DateTime.fromMillis(row.start, {zone: 'Asia/Tokyo'});
+    row.end = DateTime.fromMillis(row.end);
     row.detail = row.detail.replace(/\r?\n/g, "<br>\n");
 
     row.new_or_last = row.new || row.last;

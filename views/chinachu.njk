@@ -6,7 +6,7 @@
     {% for row in rows %}
     <div class="list-group-item program {{row.classes}}">
       <div class="row">
-        <div class="col-xs-4 col-sm-1">{{row.start | date("%m/%d %a %H:%M") }}</div>
+        <div class="col-xs-4 col-sm-1">{{row.start | date }}</div>
         <div class="col-xs-8 col-sm-1">[{{row.channel.type}}] {{row.channel.name}}</div>
         <div class="clearfix visible-xs-block hidden-sm hidden-md hidden-lg"></div>
         <h4 class="col-xs-10 col-sm-8 list-group-item-heading"><small>{% for cap in row.captions %}<span class="{{cap.class}}" title="{{cap.caption}}" aria-hidden="true"></span>{% endfor %}</small> {{row.matched | safe}}{%if not (row.filtered or row.reserved) %} <button type="button" class="add-ignore-keyword btn btn-default btn-xs" data-toggle="modal" data-target="#add-keyword" data-add-keyword="{{row.matched | safe}}"><span class="glyphicon glyphicon-remove"></span></button>{% endif %}</h4>
