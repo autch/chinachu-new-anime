@@ -103,7 +103,7 @@ app.get('/', async (req, res) => {
     row.new = /\[新\]/.test(row.fullTitle);
     row.last = /\[終\]/.test(row.fullTitle);
     row.start = DateTime.fromMillis(row.start, {zone: 'Asia/Tokyo'});
-    row.end = DateTime.fromMillis(row.end);
+    row.end = DateTime.fromMillis(row.end, {zone: 'Asia/Tokyo'});
     row.detail = row.detail.replace(/\r?\n/g, "<br>\n");
 
     row.new_or_last = row.new || row.last;
