@@ -19,7 +19,7 @@
     "express": "^4.17.1",
     "luxon": "^1.25.0",
     "minimist": "^1.2.6",
-    "nodemailer": "^6.4.16",
+    "nodemailer": "^6.6.1",
     "nunjucks": "^3.2.2"
   },
   "private": true
