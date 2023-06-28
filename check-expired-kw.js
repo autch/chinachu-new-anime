@@ -24,8 +24,8 @@ async function getKeywords() {
 
       if(!programs.some((r) =>
                         titles.every((t) =>
-                                     ['title', 'fullTitle', 'detail'].some((c) =>
-                                                                           r[c].indexOf(t) !== -1)
+                                     ['title', 'fullTitle'].some((c) =>
+                                                          r[c].indexOf(t) !== -1)
                                     )
                        )
         ) {

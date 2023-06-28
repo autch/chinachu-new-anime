@@ -14,6 +14,7 @@ const njk_env = nunjucks.configure('views', {
 njk_env.addFilter('date', (i, format) => {
   return i.toFormat(format || 'MM/dd HH:mm');
 });
+njk_env.addFilter('stripspace', (s) => new nunjucks.runtime.SafeString(s.split(/\r?\n/).map(i => i.replace(/^\s+|\s+$/g, '')).join('')));
 
 app.use(express.static('public'));
 
@@ -126,6 +127,12 @@ app.get('/', async (req, res) => {
   }
 
   res.render('chinachu.njk', locals);
+});
+
+app.get('/reload', async (req, res) => {
+  conditions = loadConditions();
+
+  res.json({'status': 'OK', 're': conditions.toString() });
 });
 
 app.listen(3000, () => {
