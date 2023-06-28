@@ -15,7 +15,7 @@
   "author": "https://github.com/autch/chinachu-new-anime",
   "license": "MIT",
   "dependencies": {
-    "ejs": "^2.6.2",
+    "ejs": "^3.1.7",
     "express": "^4.17.3",
     "luxon": "^1.28.1",
     "minimist": "^1.2.6",
