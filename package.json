@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "ejs": "^3.1.7",
-    "express": "^4.17.3",
+    "express": "^4.19.2",
     "luxon": "^1.28.1",
     "minimist": "^1.2.6",
     "nodemailer": "^6.6.1",
